@@ -17,4 +17,3 @@ schema:
           type: string
           description: "The runtime for your Lambda service"
           default:  "python3.7"
-         
