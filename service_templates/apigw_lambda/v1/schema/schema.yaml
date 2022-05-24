@@ -1,0 +1,21 @@
+schema:
+  format:
+    openapi: "3.0.0"
+  service_input_type: "HTTPServiceInput"
+
+  types:
+    HTTPServiceInput:
+      type: object
+      description: "Input properties for a Lambda backed HTTP API."
+      properties:
+        lambda_handler:
+          type: string
+          description: "The function within your code that is called to begin execution"
+          minLength: 1
+          maxLength: 50
+          default: "index.handler"
+        lambda_runtime:
+          type: string
+          description: "The runtime for your Lambda service"
+          enum: ["nodejs12.x", "python3.7", "ruby2.7", "java11", "go1.x", "dotnetcore3.1"]
+         
