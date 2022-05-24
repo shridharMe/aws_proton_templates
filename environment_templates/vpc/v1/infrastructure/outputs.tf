@@ -13,5 +13,8 @@ output "public_subnets" {
   description = "The public subnets id"
 }
 
-
+output "vpc_cidr_block" {
+  value       = var.environment.inputs.vpc_cidr
+  description = "The VPC id"
+}
 
