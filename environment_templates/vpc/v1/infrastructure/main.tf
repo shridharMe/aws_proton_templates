@@ -4,8 +4,8 @@ module "vpc" {
   name            = var.environment.inputs.vpc_name
   cidr            = var.environment.inputs.vpc_cidr
   azs             = data.aws_availability_zones.available.names
-  private_subnets = var.environment.inputs.private_subnets_cidrs
-  public_subnets  = var.environment.inputs.public_subnets_cidrs
+  private_subnets = [var.environment.inputs.private_subnet_one_cidr,var.environment.inputs.private_subnet_two_cidr,var.environment.inputs.private_subnet_three_cidr ]
+  public_subnets  = [var.environment.inputs.public_subnet_one_cidr,var.environment.inputs.public_subnet_two_cidr,var.environment.inputs.public_subnet_three_cidr ]
 
   enable_nat_gateway = true
   enable_vpn_gateway = true
