@@ -1,0 +1,25 @@
+schema:
+  format:
+    openapi: "3.0.0"
+  environment_input_type: "OperatorInput"
+  types:
+    OperatorInput:
+      type: object
+      description: "Input properties for my environment"
+      properties:
+        terraform_cloud_api_token:
+          type: string
+          description: "This is terraform cloud api token "
+          default: ""
+        aws_access_key_id:
+          type: string
+          description: "This is terraform cloud api token "
+          default: ""
+        aws_secret_access_key:
+          type: string
+          description: "This is terraform cloud api token "
+          default: ""
+        aws_session_token:
+          type: string
+          description: "This is terraform cloud api token "
+          default: ""
