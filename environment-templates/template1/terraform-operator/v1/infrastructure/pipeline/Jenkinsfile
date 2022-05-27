@@ -14,9 +14,10 @@ pipeline {
         stage ('check config') {
             steps {
                 script{
-                 env.isResourceDeleted = sh(returnStdout: true, script: 'cat .proton/deployment-metadata.json | jq .isResourceDeleted').trim()
-                 env.protonArn = sh(returnStdout: true, script: 'cat .proton/deployment-metadata.json | jq .resourceMetadata.arn').trim()
-                 sh 'aws proton notify-resource-deployment-status-change --resource-arn "${protonArn}" --status IN_PROGRESS'
+                    env.isResourceDeleted = sh(returnStdout: true, script: 'cat .proton/deployment-metadata.json | jq .isResourceDeleted').trim()
+                    env.protonArn = sh(returnStdout: true, script: 'cat .proton/deployment-metadata.json | jq .resourceMetadata.arn').trim()
+                    python3 updateTerraVars.py
+                    sh 'aws proton notify-resource-deployment-status-change --resource-arn "${protonArn}" --status IN_PROGRESS'
                 }
             }   
         }

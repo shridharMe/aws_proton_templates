@@ -9,7 +9,7 @@ terraform {
 data "template_file" "credentials" {
   template = "${file("${path.module}/file/credentials.example")}"
   vars = {
-    TERRAFORM_CLOUD_API_TOKEN = var.terraform_cloud_api_token
+    TERRAFORM_CLOUD_API_TOKEN = var.environment.inputs.terraform_cloud_api_token
   }
 }
 
@@ -38,9 +38,9 @@ resource "kubernetes_secret" "workspacesecrets" {
   }
 
 data = {
-    "AWS_ACCESS_KEY_ID"     = var.aws_access_key_id
-    "AWS_SECRET_ACCESS_KEY" = var.aws_secret_access_key
-    "AWS_SESSION_TOKEN"     = var.aws_session_token
+    "AWS_ACCESS_KEY_ID"     = var.environment.inputs.aws_access_key_id
+    "AWS_SECRET_ACCESS_KEY" = var.environment.inputs.aws_secret_access_key
+    "AWS_SESSION_TOKEN"     = var.environment.inputs.aws_session_token
   }
 }
 
