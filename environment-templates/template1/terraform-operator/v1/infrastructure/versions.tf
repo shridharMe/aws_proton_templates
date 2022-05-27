@@ -10,8 +10,10 @@ terraform {
     }
   }
   required_version = "~>1.0"
+   backend "s3" {
+    bucket         = "proton-terraform-states"
+    key            = "terraform-operator/terraform.tfstate"
+    region         = "us-east-2"
+    encrypt        = true
+  }
 }
-
-
-
- 

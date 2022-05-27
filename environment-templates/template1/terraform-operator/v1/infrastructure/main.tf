@@ -1,16 +1,19 @@
-terraform {
-  required_providers {
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = "2.0.2"
-    }
-  }
+
+resource "local_file" "credentials" {
+    content  = <<START
+credentials app.terraform.io {
+  token = ${var.environment.inputs.terraform_cloud_api_token}
 }
+
+START
+    filename = "${path.module}/credentials"
+}
+
 data "template_file" "credentials" {
   template = "${file("${path.module}/credentials.example")}"
-  vars = {
+  /*vars = {
     TERRAFORM_CLOUD_API_TOKEN = var.environment.inputs.terraform_cloud_api_token
-  }
+  }*/
 }
 
 provider "kubernetes" {
@@ -62,4 +65,10 @@ resource "helm_release" "operator" {
     kubernetes_secret.terraformrc,
     kubernetes_secret.workspacesecrets
   ]
+}
+
+resource "kubernetes_namespace" "edu" {
+  metadata {
+    name = "edu"
+  }
 }
