@@ -5,14 +5,18 @@ pipeline {
         timestamps()
     }
     environment {
-        AWS_DEFAULT_REGION="us-east-2"
-    }
+        TERRAFROM_CLOUD_API_TOKEN =credentials('TERRAFROM_CLOUD_API_TOKEN')
+        AWS_ACCESS_KEY_ID=credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_AWS_ACCESS_KEY=credentials('AWS_SECRET_AWS_ACCESS_KEY')
+        AWS_SESSION_TOKEN=credentials('AWS_SESSION_TOKEN')
+    }       
     stages{
         stage ('check config') {
             steps {
                 script{
-                  sh 'export isResourceDeleted $(cat .proton/deployment-metadata.json | jq .isResourceDeleted)'
-                  sh 'aws proton notify-resource-deployment-status-change --resource-arn "arn:aws:proton:us-east-2:753690273280:environment/vpc-primary" --status IN_PROGRESS'
+                 env.isResourceDeleted = sh(returnStdout: true, script: 'cat .proton/deployment-metadata.json | jq .isResourceDeleted').trim()
+                 env.protonArn = sh(returnStdout: true, script: 'cat .proton/deployment-metadata.json | jq .resourceMetadata.arn').trim()
+                 sh 'aws proton notify-resource-deployment-status-change --resource-arn "${protonArn}" --status IN_PROGRESS'
                 }
             }   
         }
@@ -33,7 +37,7 @@ pipeline {
         stage ('Approve terraform plan') {
             when{
                 expression {
-                    env.GIT_BRANCH == 'master'
+                    env.GIT_BRANCH == 'master' 
                 }
             }
             steps {
@@ -62,13 +66,30 @@ pipeline {
         stage ('terraform apply') {
             when{
                 expression {
-                    env.GIT_BRANCH == 'master'
+                    env.GIT_BRANCH == 'master' && !env.isResourceDeleted
                 }
             }
             steps {
                 script{
                     try{
                         sh 'terraform apply'
+                        sh 'aws proton notify-resource-deployment-status-change --resource-arn "arn:aws:proton:us-east-2:753690273280:environment/vpc-primary" --status SUCCEEDED'
+                    }catch(Exception e){
+                        sh 'aws proton notify-resource-deployment-status-change --resource-arn "arn:aws:proton:us-east-2:753690273280:environment/vpc-primary" --status FAILED'
+                    }
+                }
+            }
+        }
+        stage ('terraform true') {
+            when{
+                expression {
+                    env.GIT_BRANCH == 'master' && env.isResourceDeleted
+                }
+            }
+            steps {
+                script{
+                    try{
+                        sh 'terraform destroy'
                         sh 'aws proton notify-resource-deployment-status-change --resource-arn "arn:aws:proton:us-east-2:753690273280:environment/vpc-primary" --status SUCCEEDED'
                     }catch(Exception e){
                         sh 'aws proton notify-resource-deployment-status-change --resource-arn "arn:aws:proton:us-east-2:753690273280:environment/vpc-primary" --status FAILED'
