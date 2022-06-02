@@ -13,13 +13,13 @@ schema:
           default: ""
         aws_access_key_id:
           type: string
-          description: "This is terraform cloud api token "
+          description: "This is aws access key"
           default: ""
         aws_secret_access_key:
           type: string
-          description: "This is terraform cloud api token "
+          description: "This is aws secret access key" 
           default: ""
         aws_session_token:
           type: string
-          description: "This is terraform cloud api token "
+          description: "This is aws session token "
           default: ""
