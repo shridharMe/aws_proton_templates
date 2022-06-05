@@ -12,6 +12,8 @@ terraform {
   required_version = "~>1.0"
 }
 
-
+provider "aws" {
+  region  = local.local_data.environment.inputs.aws_region
+}
 
  
