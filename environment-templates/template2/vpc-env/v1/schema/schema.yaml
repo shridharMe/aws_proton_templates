@@ -9,8 +9,12 @@ schema:
       properties:
         vpc_name:
           type: string
-          description: "This name for your VPC"
+          description: "This is name for your VPC"
           default: proton-demo
+        aws_region:
+          type: string
+          description: "This is aws region"
+          default: us-east-2
         vpc_cidr:
           type: string
           description: "This CIDR range for your VPC"
