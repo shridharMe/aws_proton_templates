@@ -1,20 +1,21 @@
-schema:
-  format:
+--- 
+schema: 
+  environment_input_type: K8sInput
+  format: 
     openapi: "3.0.0"
-  environment_input_type: "K8sInput"
-  types:
-    K8sInput:
-      type: object
+  types: 
+    K8sInput: 
       description: "Input properties for K8s Objects"
-      properties:
-        aws_region:
-          type: string
+      properties: 
+        aws_region: 
+          default: us-east-2
           description: "This is your EKS aws region"
-          default: "us-east-2"
-       namespace_name:
           type: string
-          description: "This is k8s namspace for micro service"
-      cluster_id:
-          type: string
+        cluster_id: 
+          default: eksworkshop-eksctl
           description: "This is k8s cluster id"
-          default: "eksworkshop-eksctl"
+          type: string
+        namespace_name: 
+          description: "This is k8s namspace for micro service"
+          type: string
+      type: object
