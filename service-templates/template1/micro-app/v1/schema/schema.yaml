@@ -1,10 +1,11 @@
 --- 
 schema: 
-  environment_input_type: K8sInput
+  service_input_type: K8sInput
   format: 
     openapi: "3.0.0"
   types: 
     K8sInput: 
+      type: object
       description: "Input properties for K8s Objects"
       properties: 
         aws_region: 
@@ -18,4 +19,3 @@ schema:
         namespace_name: 
           description: "This is k8s namspace for micro service"
           type: string
-      type: object
