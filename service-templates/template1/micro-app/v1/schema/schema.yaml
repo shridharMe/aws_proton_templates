@@ -1,6 +1,7 @@
 --- 
 schema: 
   service_input_type: "K8sInput"
+   pipeline_input_type: "PipelineInputs" 
   format: 
     openapi: "3.0.0"
   types: 
@@ -19,3 +20,13 @@ schema:
         namespace_name: 
           description: "This is k8s namspace for micro service"
           type: string
+      PipelineInputs:
+      type: object
+      description: "Pipeline input properties"
+      properties:
+        service_dir:
+          type: string
+          description: "Source directory for the service"
+          default: ""
+          minLength: 1
+          maxLength: 100
