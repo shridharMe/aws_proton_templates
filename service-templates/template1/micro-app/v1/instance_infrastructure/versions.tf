@@ -21,16 +21,16 @@ terraform {
 }
 
 provider "aws" {
-  region  = local.local_data.environment.inputs.aws_region
+  region  = var.service.inputs.aws_region
 }
 
 
 provider "aws" {
-  region =  local.local_data.environment.inputs.aws_region
+  region =  var.service.inputs.aws_region
 }
 
 data "aws_eks_cluster" "cluster" {
-  name =local.local_data.environment.inputs.cluster_id
+  name =var.service.inputs.cluster_id
 }
 
 provider "kubernetes" {
