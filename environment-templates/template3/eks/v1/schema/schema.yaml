@@ -1,0 +1,17 @@
+schema:
+  format:
+    openapi: "3.0.0"
+  environment_input_type: "EKSEnvironmentInput"
+  types:
+    EKSEnvironmentInput:
+      type: object
+      description: "Input properties for my environment"
+      properties:
+        cluster_name:
+          type: string
+          description: "This is name for your eks cluster"
+          default: proton-demo
+        aws_region:
+          type: string
+          description: "This is your aws region"
+          default: us-east-2
