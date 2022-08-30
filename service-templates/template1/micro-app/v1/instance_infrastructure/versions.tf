@@ -21,21 +21,18 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.service.inputs.aws_region
+  region  = var.environment.outputs.cluster_region
 }
 
-
-provider "aws" {
-  region =  var.service.inputs.aws_region
-}
+ 
 
 data "aws_eks_cluster" "cluster" {
-  name =var.service.inputs.cluster_id
+  name =var.environment.outputs.cluster_id
 }
 
 provider "kubernetes" {
-  host                   = data.aws_eks_cluster.cluster.endpoint
-  cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
+  host                   = var.environment.outputs.cluster.endpoint
+  cluster_ca_certificate = base64decode(var.environment.outputs.kubeconfig_certificate_authority_data)
   exec {
     api_version = "client.authentication.k8s.io/v1alpha1"
     command     = "aws"
@@ -43,7 +40,7 @@ provider "kubernetes" {
       "eks",
       "get-token",
       "--cluster-name",
-      data.aws_eks_cluster.cluster.name
+      var.environment.outputs.cluster_name
     ]
   }
 }
