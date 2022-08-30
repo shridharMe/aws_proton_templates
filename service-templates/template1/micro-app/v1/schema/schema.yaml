@@ -14,7 +14,7 @@ schema:
        namespace_name:
           type: string
           description: "This is k8s namspace for micro service"
-        cluster_id:
+      cluster_id:
           type: string
           description: "This is k8s cluster id"
           default: "eksworkshop-eksctl"
