@@ -1,6 +1,6 @@
 --- 
 schema: 
-  service_input_type: K8sInput
+  service_input_type: "K8sInput"
   format: 
     openapi: "3.0.0"
   types: 
