@@ -1,9 +1,9 @@
 schema: 
   format: 
     openapi: "3.0.0"
-  service_input_type: "K8sInput"
+  service_input_type: "K8sEnvInput"
   types: 
-    K8sInput: 
+    K8sEnvInput: 
       type: object
       description: "Input properties for K8s Objects"
       properties: 
