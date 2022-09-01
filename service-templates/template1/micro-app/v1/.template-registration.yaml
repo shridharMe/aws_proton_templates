@@ -1,2 +1,2 @@
 compatible_environments:
-  - eks: 1.1
+  - eks: 1
