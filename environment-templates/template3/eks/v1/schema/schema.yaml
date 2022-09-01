@@ -10,8 +10,8 @@ schema:
         cluster_name:
           type: string
           description: "This is name for your eks cluster"
-          default: proton-demo
+          default: "proton-demo"
         aws_region:
           type: string
           description: "This is your aws region"
-          default: us-east-2
+          default: "us-east-2"
