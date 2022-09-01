@@ -14,4 +14,4 @@ schema:
         aws_region:
           type: string
           description: "This is your aws region"
-          default: "us-east-2"
+          default: "us-west-2"
