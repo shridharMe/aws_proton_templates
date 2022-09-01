@@ -12,7 +12,7 @@ terraform {
   required_version = "~>1.0"
 }
 
-/*
+
 provider "aws" {
   region  = var.environment.outputs.cluster_region
 }
@@ -36,4 +36,3 @@ provider "kubernetes" {
     ]
   }
 }
-*/
