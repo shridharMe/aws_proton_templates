@@ -2,7 +2,6 @@
 schema: 
   format: 
     openapi: "3.0.0"
-  pipeline_input_type: PipelineInputs
   service_input_type: K8sInput
   types: 
     K8sInput: 
@@ -10,23 +9,13 @@ schema:
       description: "Input properties for K8s Objects"
       properties: 
         aws_region: 
-          default: us-east-2
+          default: "us-west-2"
           description: "This is your EKS aws region"
           type: string
         cluster_id: 
-          default: eksworkshop-eksctl
+          default: "proton-demo"
           description: "This is k8s cluster id"
           type: string
         namespace_name: 
           description: "This is k8s namspace for micro service"
-          type: string
-    PipelineInputs: 
-      description: "Pipeline input properties"
-      type: object
-      properties: 
-        service_dir: 
-          default: ""
-          description: "Source directory for the service"
-          maxLength: 100
-          minLength: 1
           type: string
