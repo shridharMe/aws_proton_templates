@@ -1,0 +1,4 @@
+proton: ServiceSpec
+instances:
+  - name: micro-app-dev
+    environment: eks-dev
