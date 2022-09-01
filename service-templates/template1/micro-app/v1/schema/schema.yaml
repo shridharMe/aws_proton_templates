@@ -15,6 +15,7 @@ schema:
           default: "proton-demo"
           description: "This is k8s cluster id"
           type: string
-        namespace_name: 
+        namespace_name:
+          default: ""
           description: "This is k8s namspace for micro service"
           type: string
