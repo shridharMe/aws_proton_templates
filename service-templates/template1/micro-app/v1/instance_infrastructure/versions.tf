@@ -12,19 +12,22 @@ terraform {
   required_version = "~>1.0"
 }
 
+locals {
+  local_data = jsondecode(file("../proton.auto.tfvars.json"))
+}
 
 provider "aws" {
-  region  = var.environment.outputs.cluster_region
+  region  = local.local_data.environment.inputs.cluster_region
 }
 
 
 data "aws_eks_cluster" "cluster" {
-  name =var.environment.outputs.cluster_name
+  name =local.local_data.environment.inputs.cluster_name
 }
 
 provider "kubernetes" {
-  host                   = var.environment.outputs.endpoint
-  cluster_ca_certificate = base64decode(var.environment.outputs.kubeconfig_certificate_authority_data)
+  host                   = local.local_data.environment.outputs.endpoint
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority[0].data
   exec {
     api_version = "client.authentication.k8s.io/v1alpha1"
     command     = "aws"
@@ -32,7 +35,7 @@ provider "kubernetes" {
       "eks",
       "get-token",
       "--cluster-name",
-      var.environment.outputs.cluster_name
+      local.local_data.environment.outputs.cluster_name
     ]
   }
 }
