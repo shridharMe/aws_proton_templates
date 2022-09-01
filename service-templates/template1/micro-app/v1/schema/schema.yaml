@@ -8,6 +8,5 @@ schema:
       description: "Input properties for K8s Objects"
       properties:
         namespace_name:
-          default: ""
           description: "This is k8s namspace for micro service"
           type: string
