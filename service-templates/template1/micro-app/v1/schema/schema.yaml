@@ -2,7 +2,7 @@
 schema: 
   format: 
     openapi: "3.0.0"
-  service_input_type: K8sInput
+  service_input_type: "K8sInput"
   types: 
     K8sInput: 
       type: object
