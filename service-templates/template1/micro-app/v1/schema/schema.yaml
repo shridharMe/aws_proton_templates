@@ -6,15 +6,7 @@ schema:
     K8sEnvInput: 
       type: object
       description: "Input properties for K8s Objects"
-      properties: 
-        aws_region: 
-          default: "us-west-2"
-          description: "This is your EKS aws region"
-          type: string
-        cluster_id: 
-          default: "proton-demo"
-          description: "This is k8s cluster id"
-          type: string
+      properties:
         namespace_name:
           default: ""
           description: "This is k8s namspace for micro service"
