@@ -1,7 +1,7 @@
-variable "environment" {
+ variable "environment" {
   type = object({
-   name   = string
     inputs = map(string)
+    name   = string
   })
   default = null
 }
