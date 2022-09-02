@@ -10,3 +10,4 @@ schema:
         namespace_name:
           description: "This is k8s namspace for micro service"
           type: string
+          default: "edu"
