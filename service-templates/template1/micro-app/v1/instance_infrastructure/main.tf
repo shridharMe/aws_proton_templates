@@ -7,7 +7,8 @@ resource "kubernetes_namespace" "namespace" {
 
 resource "kubernetes_deployment" "example" {
   metadata {
-    name = var.service_instance.inputs.namespace_name
+    name = "nginx"
+    namespace=var.service_instance.inputs.namespace_name
     labels = {
       test = "MyExampleApp"
     }

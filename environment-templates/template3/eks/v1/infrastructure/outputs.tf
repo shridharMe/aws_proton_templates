@@ -5,5 +5,3 @@ output "cluster_name" {
  output "cluster_region" {
   value = var.environment.inputs.aws_region
 }
-
-   
