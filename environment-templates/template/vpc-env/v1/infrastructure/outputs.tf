@@ -14,7 +14,7 @@ output "public_subnets" {
 }
 
 output "vpc_cidr_block" {
-  value       = local.local_data.environment.inputs.vpc_cidr
+  value       = var.environment.inputs.vpc_cidr
   description = "The VPC id"
 }
 
