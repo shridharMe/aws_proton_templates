@@ -3,7 +3,7 @@ output "vpc_id" {
   description = "The VPC id"
 }
 
-output "private_subnets" {
+/*output "private_subnets" {
   value       = module.vpc.private_subnets
   description = "The private subnets id"
 }
@@ -11,7 +11,7 @@ output "private_subnets" {
 output "public_subnets" {
   value       = module.vpc.public_subnets
   description = "The public subnets id"
-}
+}*/
 
 output "vpc_cidr_block" {
   value       = local.local_data.environment.inputs.vpc_cidr
