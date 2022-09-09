@@ -12,3 +12,8 @@ output "vpc_security_group_id" {
   description = "The ID of the security group created by default on VPC creation"
   value       = module.vpc.default_security_group_id
 }
+
+output "aws_region" {
+  description = "The VPC aws region"
+  value       = "local.local_data.environment.inputs.aws_region"
+}

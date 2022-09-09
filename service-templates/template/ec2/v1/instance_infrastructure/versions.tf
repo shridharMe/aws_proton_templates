@@ -13,5 +13,5 @@ terraform {
 }
 
 provider "aws" {
-  region  = local.local_data.environment.inputs.aws_region
+  region  = local.local_data.environment.outputs.aws_region
 } 
