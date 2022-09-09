@@ -11,6 +11,8 @@ spec:
     moduleOutputName: vpc_id
   - key: vpc_security_group_id
     moduleOutputName: vpc_security_group_id
+  - key: aws_region
+    moduleOutputName: aws_region
   secretsMountPath: /tmp/secrets
   variables:
   - environmentVariable: true
