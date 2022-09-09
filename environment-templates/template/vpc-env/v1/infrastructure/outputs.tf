@@ -15,5 +15,5 @@ output "vpc_security_group_id" {
 
 output "aws_region" {
   description = "The VPC aws region"
-  value       = "local.local_data.environment.inputs.aws_region"
+  value       = local.local_data.environment.inputs.aws_region
 }
