@@ -1,13 +1,15 @@
 schema: 
   format: 
     openapi: "3.0.0"
-  service_input_type: "K8sEnvInput"
+  service_input_type: "Ec2Input"
   types: 
-    K8sEnvInput: 
+    Ec2Input: 
       type: object
       description: "Input properties for K8s Objects"
       properties:
-        namespace_name:
-          description: "This is k8s namspace for micro service"
+        instance_type:
+          description: "This is instance_type for your ec2 instance"
           type: string
-          default: "edu"
+        ami:
+          description: "This is ami for your ec2 instance"
+          type: string
