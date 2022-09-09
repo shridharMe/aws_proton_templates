@@ -7,10 +7,10 @@ spec:
     source: git::https://github.com
   organization: shridharMe
   outputs:
-  - key: vpc_id
-    moduleOutputName: vpc_id
-  - key: vpc_security_group_id
-    moduleOutputName: vpc_security_group_id
+  - key: ec2_ids
+    moduleOutputName: ec2_ids
+  - key: subnet_cidr_blocks
+    moduleOutputName: subnet_cidr_blocks
   secretsMountPath: /tmp/secrets
   variables:
   - environmentVariable: true
