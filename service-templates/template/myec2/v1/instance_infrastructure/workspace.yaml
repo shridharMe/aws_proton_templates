@@ -24,3 +24,7 @@ spec:
     key: CONFIRM_DESTROY
     sensitive: false
     value: '1'
+  - environmentVariable: true
+    key: service
+    sensitive: false
+    value: null
