@@ -1,10 +1,10 @@
-
-variable "service_instance" {
+variable "environment" {
   type = object({
-    inputs = map(string)
+    outputs = map(string)
   })
   default = null
 }
+
 variable "service" {
   type = object({
     inputs = map(string)
@@ -12,9 +12,9 @@ variable "service" {
   default = null
 }
 
-variable "environment" {
+variable "service_instance" {
   type = object({
-    outputs = map(string)
+    inputs = map(string)
   })
   default = null
 }
