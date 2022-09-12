@@ -5,6 +5,12 @@ variable "service_instance" {
   })
   default = null
 }
+variable "service" {
+  type = object({
+    inputs = map(string)
+  })
+  default = null
+}
 
 variable "environment" {
   type = object({
