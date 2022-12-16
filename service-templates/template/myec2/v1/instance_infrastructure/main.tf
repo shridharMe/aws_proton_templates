@@ -5,13 +5,13 @@
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
-  for_each = toset(data.aws_subnets.subnets.ids)
-  name = "instance-${each.key}"
+  //for_each = toset(data.aws_subnets.subnets.ids)
+  name = "instance"//-${each.key}"
   ami                    = local.local_data.service_instance.inputs.ami
   instance_type          = local.local_data.service_instance.inputs.instance_type
   monitoring             = true
   vpc_security_group_ids = [local.local_data.environment.outputs.vpc_security_group_id]
-  subnet_id              = each.value
+  subnet_id              = element(data.aws_subnets.subnets.ids,0)
 
   tags = {
     Terraform   = "true"
