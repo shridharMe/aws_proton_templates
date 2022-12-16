@@ -4,5 +4,6 @@ output "subnet_cidr_blocks" {
 
 output "ec2_ids" {
   description = "The ID of the instance"
-  value       = jsonencode([for s in module.ec2_instance : s.id])
+  value       =  module.ec2_instance.id
+  //value       = jsonencode([for s in module.ec2_instance : s.id])
 }
